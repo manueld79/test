@@ -1,0 +1,17 @@
+# Use a lightweight base image of Python
+FROM python:3.9-slim
+
+# Create a non-root user
+RUN useradd -m myuser
+USER myuser
+
+# Copy the script and requirements to the container
+WORKDIR /home/myuser
+COPY main.py .
+COPY requirements.txt .
+
+# Install the necessary dependencies
+RUN pip install -r requirements.txt
+
+# Command to run the script
+ENTRYPOINT ["python", "main.py"]
