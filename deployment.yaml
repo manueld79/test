@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myprogram-deployment
+  labels:
+    app: myprogram
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myprogram
+  template:
+    metadata:
+      labels:
+        app: myprogram
+    spec:
+      containers:
+      - name: myprogram-container
+        image: mydockerimage
+        command: ["sh", "-c", "sleep infinity"]

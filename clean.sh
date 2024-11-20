@@ -1,0 +1,1 @@
+sed -E 's_https?://__; s/^www\.//; s/\.$//' domains.txt | awk -F/ '{print tolower($1)}' | sort -u
